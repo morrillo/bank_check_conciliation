@@ -13,9 +13,9 @@
             <field name="model">account.bank.statement.line</field>
             <field name="inherit_id" ref="account.view_bank_statement_form"/>
             <field name="arch" type="xml">
-		<field name="amount" position="after">
+                <xpath expr="//form/sheet/notebook/page/field[@name='line_ids']/tree/field[@name='amount']" position="after">
 			<field name="check_id" />
-		</field>
+		</xpath>
             </field>
         </record>
 
