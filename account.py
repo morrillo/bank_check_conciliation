@@ -13,5 +13,6 @@ class account_bank_statement_line(models.Model):
 			self.partner_id = self.check_id.source_partner_id.id
 		if self.check_id.amount:
 			self.amount = self.check_id.amount
-
+		self.ref = str(self.check_id.number)
+		self.name = str(self.check_id.number)
 
