@@ -34,13 +34,23 @@ class account_bank_statement(osv.osv):
 	
 	def button_confirm_bank(self, cr, uid, ids, context=None):
 		res = super(account_bank_statement, self).button_confirm_bank(cr, uid, ids, context=context)
-		import pdb;pdb.set_trace()
-		for statement_id in statement_ids:
+		for statement_id in ids:
 			bank_statement = self.pool.get('account.bank.statement').browse(cr,uid,statement_id)
 			for line in bank_statement.line_ids:
 				if line.check_id:
 					check = self.pool.get('account.check').browse(cr,uid,line.check_id.id)
 					check.action_deposit()
+		return res
+
+
+	def button_cancel(self, cr, uid, ids, context=None):
+		res = super(account_bank_statement, self).button_cancel(cr, uid, ids, context=context)
+		for statement_id in ids:
+			bank_statement = self.pool.get('account.bank.statement').browse(cr,uid,statement_id)
+			for line in bank_statement.line_ids:
+				if line.check_id:
+					check = self.pool.get('account.check').browse(cr,uid,line.check_id.id)
+					check.action_cancel()
 		return res
 
 account_bank_statement()
