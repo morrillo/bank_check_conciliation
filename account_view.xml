@@ -10,12 +10,15 @@
         -->
         <record model="ir.ui.view" id="account_bank_statement_line_check">
             <field name="name">account.bank.statement.line.check</field>
-            <field name="model">account.bank.statement.line</field>
+            <field name="model">account.bank.statement</field>
             <field name="inherit_id" ref="account.view_bank_statement_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//form/sheet/notebook/page/field[@name='line_ids']/tree/field[@name='amount']" position="after">
+                <!-- xpath expr="//form/sheet/notebook/page/field[@name='line_ids']/tree/field[@name='amount']" position="after">
 			<field name="check_id" />
-		</xpath>
+		</xpath -->
+                <field name="amount" position="after">
+			<field name="check_id" string="Nro de Cheque"/>
+		</field>
             </field>
         </record>
 
