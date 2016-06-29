@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Top menu item -->
+        <!--
+		base.group_sale_manager
+            This menu item's purpose is to overwrite another one defined in
+            the base module in order to set new groups.
+        -->
+        <record model="ir.ui.view" id="account_bank_statement_line_check">
+            <field name="name">account.bank.statement.line.check</field>
+            <field name="model">account.bank.statement.line</field>
+            <field name="inherit_id" ref="account.view_bank_statement_form"/>
+            <field name="arch" type="xml">
+		<field name="amount" position="after">
+			<field name="check_id" />
+		</field>
+            </field>
+        </record>
+
+    </data>
+</openerp>
