@@ -31,7 +31,7 @@ import time
 class account_bank_statement(osv.osv):
 	_inherit = 'account.bank.statement'
 
-	
+	"""	
 	def button_confirm_bank(self, cr, uid, ids, context=None):
 		res = super(account_bank_statement, self).button_confirm_bank(cr, uid, ids, context=context)
 		for statement_id in ids:
@@ -44,7 +44,7 @@ class account_bank_statement(osv.osv):
 					else:
 						check.action_debit()
 		return res
-
+	"""	
 
 	def button_cancel(self, cr, uid, ids, context=None):
 		res = super(account_bank_statement, self).button_cancel(cr, uid, ids, context=context)
@@ -55,5 +55,6 @@ class account_bank_statement(osv.osv):
 					check = self.pool.get('account.check').browse(cr,uid,line.check_id.id)
 					check.action_cancel()
 		return res
+
 
 account_bank_statement()

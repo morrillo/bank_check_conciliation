@@ -19,3 +19,16 @@ class account_bank_statement_line(models.Model):
 		self.ref = str(self.check_id.number)
 		self.name = str(self.check_id.number)
 
+class account_bank_statement(models.Model):
+	_inherit = 'account.bank.statement'
+
+	@api.multi
+	def mark_checks(self):
+		for line in self.line_ids:
+			if line.check_id:
+				check = line.check_id
+                                if check.state == 'holding':
+					check.action_deposit()
+				else:
+			                check.action_debit()
+
