@@ -16,9 +16,9 @@
                 <!-- xpath expr="//form/sheet/notebook/page/field[@name='line_ids']/tree/field[@name='amount']" position="after">
 			<field name="check_id" />
 		</xpath -->
-		<button name="%(account.action_bank_reconcile_bank_statements)d" position="after">
+		<field name="state" position="before">
 			<button name="mark_checks" type="object" string="Marcar cheques" />
-		</button>
+		</field>
                 <field name="amount" position="after">
 			<field name="check_id" string="Nro de Cheque"/>
 		</field>
