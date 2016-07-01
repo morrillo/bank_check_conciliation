@@ -39,7 +39,10 @@ class account_bank_statement(osv.osv):
 			for line in bank_statement.line_ids:
 				if line.check_id:
 					check = self.pool.get('account.check').browse(cr,uid,line.check_id.id)
-					check.action_deposit()
+					if check.state == 'holding':
+						check.action_deposit()
+					else:
+						check.action_debit()
 		return res
 
 
